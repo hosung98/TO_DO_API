@@ -1,3 +1,4 @@
+
 const mysql = require('mysql');  // mysql 모듈 로드
 const mybatisMapper = require('mybatis-mapper');
 
@@ -27,7 +28,6 @@ let query = mybatisMapper.getStatement('testMapper', 'testBasic', param, format)
 
 console.log(query);  //해당쿼리가 조합된 것을 볼 수 있습니다.
 
-connection.connect();
 connection.query(query, function (error, results, fields) {  //조회
     if (error) {
         console.log(error);

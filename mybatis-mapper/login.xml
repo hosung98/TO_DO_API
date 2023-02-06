@@ -7,6 +7,6 @@
     FROM
       T_IFO_MEMBERS 
     WHERE
-      ID = 'admin'
+      ID = #{id}
   </select>
 </mapper>
