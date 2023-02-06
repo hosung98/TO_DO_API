@@ -1,6 +1,5 @@
 // 모듈
 const express = require('express');
-const res = require('express/lib/response');
 const app = express();
 
 // 라우팅
