@@ -20,7 +20,7 @@ let param = {
     id : "admin1"
 }
 
-l//질의문 형식
+//질의문 형식
 let format = {language: 'sql', indent: '  '};
 let query = mybatisMapper.getStatement('testMapper', 'testBasic', param, format);
 //첫번째는 xml의 name값, 두번째는 해당 xml의 id값, 세번째는 파라미터, 마지막은 포맷 입니다.
