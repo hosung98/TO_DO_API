@@ -1,6 +1,10 @@
 "use strict";
 
 const home = (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Credentials', 'true'); // 쿠키 주고받기 허용
+  res.json({'id': 'hosung'});
+  //res.end();
   res.render("home/index");
 };
 
