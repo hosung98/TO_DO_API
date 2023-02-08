@@ -1,13 +1,31 @@
 "use strict";
+const db = require('../../config/DBconnection'); //db설정 호출
+const conn =  db.init(); //db 연결
+
+
 
 const home = (req, res) => {
-  //db로 데이터 전송
-  
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Credentials', 'true'); // 쿠키 주고받기 허용
-  res.status(200).json({'id': 'hosung'});
-  //res.end();
-  //res.render("home/index");
+	
+
+  let param = {
+      id : req.query.id
+  }
+  
+  //질의문 형식
+  let format = {language: 'sql', indent: '  '};
+  let query = global.mapper.getStatement('testMapper', 'testBasic', param, format);
+  //console.log(query);   
+
+  conn.query(query, function (error, results, fields) {  //조회
+      if (error) {
+          console.log(error);
+      }
+      console.log(query)
+      res.writeHead(200,{'Content-Type' : 'main.html'})
+      res.status(200).json(results);
+  });
 };
 
 const login = (req, res) => {
