@@ -21,9 +21,11 @@ const home = (req, res) => {
   conn.query(query, function (error, results, fields) {  //조회
       if (error) {
           console.log(error);
+          res.status(400).json(results);
+          return;
       }
       console.log(query)
-      res.writeHead(200,{'Content-Type' : 'main.html'})
+      //res.writeHead(200,{'Content-Type' : 'main.html'})
       res.status(200).json(results);
   });
 };
