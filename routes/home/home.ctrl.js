@@ -1,4 +1,5 @@
 "use strict";
+const { json } = require('express');
 const db = require('../../config/DBconnection'); //db설정 호출
 const conn =  db.init(); //db 연결
 
@@ -13,8 +14,9 @@ const home = (req, res) => {
 const login = (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Credentials', 'true'); // 쿠키 주고받기 허용
-	
+  
 
+  console.log("req : " +  req.body.id);
   let param = {
       id : req.query.id,
       password : req.query.password
@@ -29,8 +31,8 @@ const login = (req, res) => {
     msg : ""
   }
 
-  conn.query(query, function (error, results, fields) {  //조회
-      
+  
+  conn.query(query, function (error, results, fields) {  
       //Error
       if (error || results[0].cnt == 0) {
           result.success = false;
@@ -38,7 +40,7 @@ const login = (req, res) => {
           res.status(400).json(result);
           return;
       }
-      console.log(query);
+      console.log("LOG :: ================ " + query);
       result.success = true;
       result.msg = "";      
       res.status(200).json(result);
