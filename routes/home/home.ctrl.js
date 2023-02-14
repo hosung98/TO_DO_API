@@ -5,12 +5,19 @@ const conn =  db.init(); //db 연결
 
 
 const home = (req, res) => {
+
+};
+
+
+// REST-API (/login)
+const login = (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Credentials', 'true'); // 쿠키 주고받기 허용
 	
 
   let param = {
-      id : req.query.id
+      id : req.query.id,
+      password : req.query.password
   }
   
   //질의문 형식
@@ -25,13 +32,8 @@ const home = (req, res) => {
           return;
       }
       console.log(query)
-      //res.writeHead(200,{'Content-Type' : 'main.html'})
       res.status(200).json(results);
   });
-};
-
-const login = (req, res) => {
-  res.render("home/login");
 };
 
 // == home: home 형식과 같음(value 값을 넣어주지 않으면 key와 동일한 value값이 들어간다.)
