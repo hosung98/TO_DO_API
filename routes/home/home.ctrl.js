@@ -25,18 +25,23 @@ const login = (req, res) => {
   let query = global.mapper.getStatement('loginMapper', 'loginCheck', param, format);
 
   let result = {
-    code : "",
-    results : ""
+    success : "",
+    msg : ""
   }
 
   conn.query(query, function (error, results, fields) {  //조회
       
-      if (error) {
-          res.status(400).json(results);
+      //Error
+      if (error || results[0].cnt == 0) {
+          result.success = false;
+          result.msg = "해당 로그인 정보가 없습니다.";
+          res.status(400).json(result);
           return;
       }
-      console.log(query)
-      res.status(200).json(results);
+      console.log(query);
+      result.success = true;
+      result.msg = "";      
+      res.status(200).json(result);
   });
 };
 
