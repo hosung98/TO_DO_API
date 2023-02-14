@@ -1,5 +1,6 @@
 const mysql = require('mysql');
 
+//DB info
 const dbInfo = {
     host: '43.201.121.190',
     port: '51211',
@@ -8,6 +9,7 @@ const dbInfo = {
     database: 'BITDB'
 }
 
+//DB connection
 let dbcon = {
 	init:function() {
 		return mysql.createConnection(dbInfo);
@@ -15,7 +17,7 @@ let dbcon = {
 	conn:function(con) {
 		con.connect(function(err){
 			if(err) {
-				console.log("mysql connection error :"+err);
+				console.log("mysql connection error : "+err);
 				setTimeout(init, 2000);
 
 			} else {
