@@ -23,8 +23,19 @@ const sign = {
             msg : ""
         }
 
-        conn.query(query, function (error, results, fields) {
-            console.log(results);
+        conn.query(query, function (error, rows) {
+            console.log(rows);
+        //Error
+        if (rows.affectedRows == 0) {
+            result.success = false;
+            result.msg = "해당 로그인 정보가 없습니다.";
+            res.status(400).json(result);
+            return;
+        }            
+
+            result.success = true;
+            result.msg = "success";
+            res.json(result);
         });
     }
 
