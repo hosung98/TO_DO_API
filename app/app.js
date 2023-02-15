@@ -24,7 +24,7 @@ app.use(express.static(`${__dirname}/src/public`)); // app.js 가 있는 디렉�
 
 // db
 const mybatisMapper = require('mybatis-mapper');
-mybatisMapper.createMapper(['./mybatis-mapper/login.xml']);
+mybatisMapper.createMapper(['./mybatis-mapper/register.xml']);
 global.mapper = mybatisMapper;
 
 //DB 연결설정
