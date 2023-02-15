@@ -9,9 +9,9 @@
             name
         )
         VALUES(
-            id = #{id},
-            password = #{password},
-            name = #{name}
+            #{id},
+            #{password},
+            #{name}
         )
 
     </insert>
