@@ -3,7 +3,9 @@
 <mapper namespace="loginMapper">  
   <select id="loginCheck">
     SELECT
-      count(*) as cnt
+      count(*) as cnt,
+      id as id,
+      id as password
     FROM
       T_IFO_MEMBERS 
     WHERE
