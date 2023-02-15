@@ -20,6 +20,7 @@ const process = {
 
     let result = {
       success : "",
+      token : "",
       msg : ""
     }
 
@@ -32,19 +33,20 @@ const process = {
             return;
         }
         //Success
-        
+        console.log("login id :: " + results[0].password);
         //jwtToken 생성
         const payload = {
-          id: results.id,
-          password: results.password
+          id: results[0].id,
+          password: results[0].password
         };
         const options = {
-          expiresIn: '1h'
+          expiresIn: '1m'
         };
         const token = jwt.sign(payload, secretKey, options);
-        console.log(token);
+        console.log("발급 jwt token :: " + token);
 
         result.success = true;
+        result.token = token;
         result.msg = "";      
         res.json(result);
     });

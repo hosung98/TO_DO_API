@@ -5,7 +5,7 @@
     SELECT
       count(*) as cnt,
       id as id,
-      id as password
+      password as password
     FROM
       T_IFO_MEMBERS 
     WHERE
