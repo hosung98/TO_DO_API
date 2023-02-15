@@ -51,9 +51,6 @@ const process = {
         res.json(result);
     });
   },
-  register: (req, res) => {
-    res.render("home/register")
-  },
 };
 
 const show = {
