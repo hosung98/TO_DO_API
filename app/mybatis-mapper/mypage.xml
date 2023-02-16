@@ -3,8 +3,7 @@
 <mapper namespace="mypageMapper">  
   <select id="memberInfo">
     SELECT
-      id,
-      name
+      *
     FROM
       T_IFO_MEMBERS 
     WHERE
