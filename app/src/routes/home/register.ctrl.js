@@ -1,6 +1,25 @@
 "use strict";
 
+const check = {
+    idCheck : (req, res) => {
+        let param = {
+            id : req.query.id
+        }
 
+        console.log(param);
+
+
+        const db = require('../../../config/DBconnection');
+        const conn = db.init();
+
+        let format = {language : 'sql', indent : ''};
+        let query = global.mapper.getStatement('registerMapper', 'checkId', param, format);        
+
+        conn.query(query, function (error, results){
+            res.json(results);
+        });
+    }
+}
 
 const sign = {
     register : (req, res) => {
@@ -43,5 +62,6 @@ const sign = {
 };
 
 module.exports = {
-    sign
+    sign,
+    check
   };
