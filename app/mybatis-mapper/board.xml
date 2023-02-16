@@ -18,4 +18,30 @@
         AND (A.MEMBERS_ID  = #{searchVal}
           OR A.TITLE       = #{searchVal});
   </select>
+
+  <!-- 리스트 시퀀스 -->
+  <select id="getBoardSeq">
+    SELECT MAX(BOARD_ID)+1 AS SEQ FROM T_IFO_BOARD
+  </select>
+  <!-- 리스트 추가 -->
+  <insert id="addBoard">
+      INSERT
+        INTO T_IFO_BOARD
+        (
+        BOARD_ID,
+        TITLE,
+        CONTENT,
+        MEMBERS_ID,
+        REG_DT,
+        MOD_DT)
+      VALUES
+      (
+        #{boardseq},
+        #{subject},
+        #{item},
+        #{userId},
+        now(),
+        now()
+      );
+  </insert>  
 </mapper>
