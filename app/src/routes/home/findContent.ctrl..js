@@ -3,7 +3,7 @@
 const findContent = {
     info:(req, res) => {
         let param = {
-            searchVal : req.body.searchVal  //검색값
+            searchVal : req.query.searchVal  //검색값
         }
 
 
