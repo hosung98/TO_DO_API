@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">  
+  <!-- 메인화면에서 콘텐츠 검색-->
+  <select id="findContent">
+      select
+        A.BOARD_ID    AS BOARD_ID,   /*게시판시퀀스*/
+        A.TITLE       AS TITLE,      /*제목*/
+        A.CONTENT     AS CONTENT,    /*내용*/
+        A.MEMBERS_ID  AS MEMBERS_ID, /*작성자*/
+        A.REG_DT      AS REG_DT ,    /*등록일자*/
+        A.MOD_DT      AS MOD_DT      /*수정일자*/
+      from
+        T_IFO_BOARD A,
+        T_IFO_MEMBERS B
+      WHERE 
+        A.MEMBERS_ID = B.id 
+        AND (A.MEMBERS_ID  = #{searchVal}
+          OR A.TITLE       = #{searchVal});
+  </select>
+</mapper>
