@@ -47,4 +47,12 @@
         now()
       );
   </insert>  
-</mapper>
+
+  <!-- 메인화면에서 모든유저정보 검색-->
+  <select id="findUserInfo">
+    SELECT USR.ID                                                             as USER_ID
+    ,	   USR.NAME                                                             as USER_NAME
+    ,	   (SELECT COUNT(BOARD_ID) FROM T_IFO_BOARD WHERE MEMBERS_ID = USR.ID)  as BOARD_CNT
+    FROM T_IFO_MEMBERS USR   
+  </select>
+</mapper> 

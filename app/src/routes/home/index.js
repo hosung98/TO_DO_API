@@ -19,11 +19,12 @@ router.get("/authCheck",authCheck.authCheck.register);
 router.get("/mypage", ctrlMyPage.mypage.info);
 router.get("/findContent", ctrlContent.findContent.info);  
 router.get("/register", ctrlRegister.check.idCheck);
+router.get("/findUserInfo", ctrlContent.findUserInfo.info);
 
 //control(POST 방식)
 router.post("/register", ctrlRegister.sign.register);
 router.post("/login", ctrl.process.login); 
-router.post("/addBoard", ctrlBoard.addBoardCtrl.addBoard); 
+router.post("/addBoard", ctrlBoard.addBoardCtrl.addBoard);
 
 // 외부로 내보내기
 module.exports = router;
