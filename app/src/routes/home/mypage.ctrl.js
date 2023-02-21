@@ -19,7 +19,6 @@ const mypage = {
         }
 
         conn.query(query, function (error,  results) {
-            console.log(results);
             if(results == ""){
                 result.sucess = false;
                 result.msg = "조회되는 사용자의 정보가 없습니다.";
@@ -34,6 +33,28 @@ const mypage = {
 
 
  
+    },
+
+    check:(req, res) => {
+        let param = {
+            id : req.query.id,
+            password : req.query.password
+        }
+
+        const db = require('../../../config/DBconnection');
+        const conn = db.init();
+
+        let format = {language : 'sql', indent : ''};
+        let query = global.mapper.getStatement('mypageMapper', 'checkInfo', param, format);
+
+        let result = {
+            sucess : "",
+            msg : ""
+        }
+
+        conn.query(query, function (error,  results) {
+            res.json(results)
+        });
     }
 };
 

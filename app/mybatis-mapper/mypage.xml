@@ -9,4 +9,25 @@
     WHERE
       id = #{id}
   </select>
+
+  <select id="checkInfo">
+    SELECT
+      COUNT(*) AS CNT
+    FROM 
+      T_IFO_MEMBERS
+    WHERE
+      ID = #{id}
+    AND 
+      PASSWORD = #{password}
+  </select>
+
+  <update id="changeInfo">
+    UPDATE 
+      T_IFO_MEMBERS
+    SET 
+      NAME = #{name},
+      PASSWORD = #{password}
+    WHERE 
+      ID = #{id}
+  </update>
 </mapper>
