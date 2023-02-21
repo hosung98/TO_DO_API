@@ -43,7 +43,7 @@ const findContent = {
 const findUserInfo = {
     info:(req, res) => {
         let param = {
-            searchVal : '1'  //검색값
+            searchVal : req.query.searchVal  //검색값
         }
 
         //respons form

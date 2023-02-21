@@ -54,5 +54,8 @@
     ,	   USR.NAME                                                             as USER_NAME
     ,	   (SELECT COUNT(BOARD_ID) FROM T_IFO_BOARD WHERE MEMBERS_ID = USR.ID)  as BOARD_CNT
     FROM T_IFO_MEMBERS USR   
+    <if test="searchVal != null and searchVal != ''">
+    WHERE USR.ID  = #{searchVal}
+    </if>
   </select>
 </mapper> 
