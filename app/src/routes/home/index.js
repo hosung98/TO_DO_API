@@ -20,6 +20,7 @@ router.get("/mypage", ctrlMyPage.mypage.info);
 router.get("/findContent", ctrlContent.findContent.info);  
 router.get("/register", ctrlRegister.check.idCheck);
 router.get("/findUserInfo", ctrlContent.findUserInfo.info);
+router.get("/check", ctrlMyPage.mypage.check);
 
 //control(POST 방식)
 router.post("/register", ctrlRegister.sign.register);
