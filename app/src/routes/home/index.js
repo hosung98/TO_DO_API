@@ -26,6 +26,7 @@ router.get("/check", ctrlMyPage.mypage.check);
 router.post("/register", ctrlRegister.sign.register);
 router.post("/login", ctrl.process.login); 
 router.post("/addBoard", ctrlBoard.addBoardCtrl.addBoard);
+router.post("/mypage", ctrlMyPage.mypage.change);
 
 // 외부로 내보내기
 module.exports = router;

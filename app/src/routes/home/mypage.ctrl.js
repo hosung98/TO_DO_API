@@ -1,5 +1,11 @@
 "use strict";
 
+
+const db = require('../../../config/DBconnection');
+const conn = db.init();
+
+const format = {language : 'sql', indent : ''};
+
 const mypage = {
     info:(req, res) => {
         
@@ -7,10 +13,6 @@ const mypage = {
             id : req.query.id
         }
 
-        const db = require('../../../config/DBconnection');
-        const conn = db.init();
-
-        let format = {language : 'sql', indent : ''};
         let query = global.mapper.getStatement('mypageMapper', 'memberInfo', param, format);
 
         let result = {
@@ -41,10 +43,6 @@ const mypage = {
             password : req.query.password
         }
 
-        const db = require('../../../config/DBconnection');
-        const conn = db.init();
-
-        let format = {language : 'sql', indent : ''};
         let query = global.mapper.getStatement('mypageMapper', 'checkInfo', param, format);
 
         let result = {
@@ -55,6 +53,31 @@ const mypage = {
         conn.query(query, function (error,  results) {
             res.json(results)
         });
+    },
+
+    change:(req, res) => {
+        let param = {
+            id : req.body.id,
+            name : req.body.name
+        }
+
+        let query = global.mapper.getStatement('mypageMapper', 'changeInfo', param, format);
+
+        let result = {
+            sucess : "",
+            msg : ""
+        }        
+
+        conn.query(query, function (error,  results) {
+            if(results.changedRows> 0){
+                result.sucess = true;
+                result.msg = "SUCESS";
+            }else{
+                result.sucess = false;
+                result.msg = "FAIL";
+            }
+            res.json(result);
+        });        
     }
 };
 

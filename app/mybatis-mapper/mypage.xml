@@ -25,8 +25,7 @@
     UPDATE 
       T_IFO_MEMBERS
     SET 
-      NAME = #{name},
-      PASSWORD = #{password}
+      NAME = #{name}
     WHERE 
       ID = #{id}
   </update>
